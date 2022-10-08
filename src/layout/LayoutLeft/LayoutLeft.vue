@@ -26,6 +26,13 @@ export default {
         },
       ],
       activePath: '',
+      iconList: {
+        125: 'el-icon-user-solid',
+        103: 'el-icon-s-tools',
+        101: 'el-icon-s-goods',
+        102: 'el-icon-s-management',
+        145: 'el-icon-s-data',
+      },
     }
   },
   methods: {
