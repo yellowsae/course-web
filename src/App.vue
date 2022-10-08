@@ -1,22 +1,21 @@
 <script>
+import LayoutContainer from './layout/LayoutContent.vue'
+import LayoutLeft from './layout/LayoutLeft.vue'
+import LayoutHeader from './layout/LayoutHeader.vue'
 export default {
   name: 'App',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    }
-  },
-
-  methods: {
-    onClick() {
-      this.msg = 'Hello World'
-    },
+  components: {
+    LayoutContainer,
+    LayoutHeader,
+    LayoutLeft,
   },
 }
 </script>
 
 <template>
-  <div @click="onClick">
-    {{ msg }}
+  <div>
+    <LayoutHeader />
+    <LayoutLeft />
+    <LayoutContainer />
   </div>
 </template>

@@ -7,6 +7,16 @@ const router = new VueRouter({
   mode: 'history',
   base: import.meta.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: () => import('../views/Home/index.vue'),
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: () => import('../views/Test/index.vue'),
+    },
   ],
 })
 
