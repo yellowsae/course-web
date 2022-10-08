@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: 'Test',
+  name: 'Login',
 }
 </script>
 
 <template>
   <div>
-    Test
+    页面
   </div>
 </template>

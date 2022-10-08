@@ -9,14 +9,25 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: () => import('../views/Home/index.vue'),
+      name: 'Layout',
+      component: () => import('../layout/index.vue'),
+      redirect: '/welcome', // 配置路由重定向
+      children: [
+        {
+          path: '/welcome',
+          component: () => import('../views/welcome/index.vue'),
+        },
+        {
+          path: '/test',
+          component: () => import('../views/test/index.vue'),
+        },
+        {
+          path: '/home',
+          component: () => import('../views/home/index.vue'),
+        },
+      ],
     },
-    {
-      path: '/test',
-      name: 'Test',
-      component: () => import('../views/Test/index.vue'),
-    },
+
   ],
 })
 

@@ -7,32 +7,27 @@ export default {
       isCollapse: true,
       MenuList: [
         {
-          authName: '首页',
+          authName: '教师双选管理',
           id: 1,
           icon: 'el-icon-s-home',
-          path: '/home',
           children: [
             {
-              authName: 'a',
+              authName: '教师申报题目',
               id: 2,
-              path: '/home',
+              path: 'home',
+              children: [
+              ],
             },
             {
-              authName: 'b',
-              id: 3,
-              path: '/test',
+              authName: '教师题目审核',
+              id: 4,
+              path: 'test',
             },
           ],
         },
       ],
+      // 本地保存路由
       activePath: '',
-      iconList: {
-        125: 'el-icon-user-solid',
-        103: 'el-icon-s-tools',
-        101: 'el-icon-s-goods',
-        102: 'el-icon-s-management',
-        145: 'el-icon-s-data',
-      },
     }
   },
   methods: {
@@ -82,3 +77,4 @@ export default {
 <style>
 @import "./LayoutLeft.scss";
 </style>
+
