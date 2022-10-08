@@ -14,14 +14,14 @@ export default {
             {
               authName: '教师申报题目',
               id: 2,
-              path: 'home',
+              path: 'addSubject',
               children: [
               ],
             },
             {
               authName: '教师题目审核',
               id: 4,
-              path: 'test',
+              path: 'review',
             },
           ],
         },
@@ -57,6 +57,7 @@ export default {
         :key="items.id" :index="`${items.id}` "
       >
         <template #title>
+          <i class="el-icon-s-custom" />
           <span>{{ items.authName }}</span>
         </template>
         <el-menu-item

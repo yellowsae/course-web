@@ -25,6 +25,16 @@ const router = new VueRouter({
           path: '/home',
           component: () => import('../views/home/index.vue'),
         },
+        // addSubject
+        {
+          path: '/addSubject',
+          component: () => import('../views/subject/index.vue'),
+        },
+        // review
+        {
+          path: '/review',
+          component: () => import('../views/review/index.vue'),
+        },
       ],
     },
 
