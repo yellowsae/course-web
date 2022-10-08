@@ -1,7 +1,7 @@
 <script>
-import LayoutContainer from './layout/LayoutContent.vue'
-import LayoutLeft from './layout/LayoutLeft.vue'
-import LayoutHeader from './layout/LayoutHeader.vue'
+import LayoutContainer from './layout/LeayoutContent/LayoutContent.vue'
+import LayoutLeft from './layout/LayoutLeft/LayoutLeft.vue'
+import LayoutHeader from './layout/LeayoutHeader/LayoutHeader.vue'
 export default {
   name: 'App',
   components: {
