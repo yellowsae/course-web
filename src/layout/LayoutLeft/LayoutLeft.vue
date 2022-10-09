@@ -4,31 +4,23 @@ export default {
   data() {
     return {
       // 是否展开菜单
-      isCollapse: true,
-      MenuList: [
-        {
-          authName: '教师双选管理',
-          id: 1,
-          icon: 'el-icon-s-home',
-          children: [
-            {
-              authName: '教师申报题目',
-              id: 2,
-              path: 'addSubject',
-              children: [
-              ],
-            },
-            {
-              authName: '教师题目审核',
-              id: 4,
-              path: 'review',
-            },
-          ],
-        },
-      ],
+      isCollapse: '',
+      MenuList: [],
       // 本地保存路由
       activePath: '',
     }
+  },
+  mounted() {
+    // 获取侧边栏数据
+    this.$api.get('/api/menuInfo', {}).then((res) => {
+      // 赋值
+      // this.MenuList = res.data.menuList
+    }).catch((e) => {
+      alert(e)
+    })
+
+    // 执行getMenuList方法
+    this.getMenuList()
   },
   methods: {
     // 保存链接的激活状态
@@ -36,6 +28,18 @@ export default {
       window.sessionStorage.setItem('activePath', activePath)
       // 重新赋值
       this.activePath = activePath
+    },
+
+    // 使用 async await 建议使用
+    async getMenuList() {
+      const res = await this.$api.get('/api/menuInfo', {})
+      // this.MenuList = res.data.menuList
+      // eslint-disable-next-line no-console
+      console.log(res, 'res-> async await 方法获取数据')
+
+      // 赋值
+      this.MenuList = res.data.menuList
+      this.isCollapse = res.data.isCollapse
     },
   },
 }
