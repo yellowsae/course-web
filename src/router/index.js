@@ -19,7 +19,7 @@ const router = new VueRouter({
         },
         {
           path: '/test',
-          component: () => import('../views/test/index.vue'),
+          component: () => import('../views/Test/index.vue'),
         },
         {
           path: '/home',
