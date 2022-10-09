@@ -12,7 +12,7 @@ export default {
       <!-- <span class="text">首页</span> -->
       <el-breadcrumb separator="/" style="color: black;">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">活动管理 </a></el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="r-LayoutHeader">
