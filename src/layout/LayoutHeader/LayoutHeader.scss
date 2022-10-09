@@ -1,0 +1,20 @@
+
+.FullHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+  
+  }
+  
+.text {
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+.el-avatar {
+    overflow: inherit;
+  }
+::v-deep .el-breadcrumb__separator {
+      color: #303236;
+}
