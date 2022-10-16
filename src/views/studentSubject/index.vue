@@ -3,23 +3,13 @@ export default {
   name: 'StudentSub',
   data() {
     return {
-      tableData: [{
-        subject: '基于舆论分析的信息安全系统',
-        subjectType: '实验研究',
-        subjectFrom: '教师自选题',
-        mentor: '于子涵 (11111)',
-        subjectState: '确认通过',
-        operate: '题目详情',
-      },
-      {
-        subject: '基于舆论分析的信息安全系统',
-        subjectType: '实验研究',
-        subjectFrom: '教师自选题',
-        mentor: '于子涵',
-        subjectState: '不通过',
-        operate: '题目详情',
-      }],
+      //
+      tableData: [],
     }
+  },
+
+  created() {
+    this.gettableDataInfo()
   },
 
   methods: {
@@ -30,6 +20,13 @@ export default {
       else if (rowIndex === 3)
         return 'success-row'
       return ''
+    },
+
+    // 项目详情信息
+    async gettableDataInfo() {
+      const res = await this.$api.get('/api/subjectInfo', {})
+
+      this.tableData = res.data.tableData
     },
   },
 }
@@ -50,7 +47,7 @@ export default {
         <el-table-column
           prop="subject"
           label="题目"
-          width="180"
+          width="300"
         />
         <el-table-column
           prop="subjectType"
@@ -72,6 +69,7 @@ export default {
         <el-table-column
           prop="operate"
           label="操作"
+          width="180"
         />
       </el-table>
     </el-card>

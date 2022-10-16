@@ -13,7 +13,7 @@ export default {
   },
   mounted() {
     // 执行getMenuList方法
-    // this.getMenuList()  // 侧边栏数据
+    // this.getMenuList()  // 侧边栏数据 - 教师端
 
     // 侧边栏 Student 端
     this.getMenuListStudent()
@@ -42,8 +42,6 @@ export default {
     async getMenuListStudent() {
       const res = await this.$api.get('/api/student/menuInfo', {})
       // eslint-disable-next-line no-console
-      console.log(res, '学生侧边栏数据')
-
       this.MenuList = res.data.menuList
       this.isCollapse = res.data.isCollapse
     },
@@ -68,10 +66,8 @@ export default {
         :key="items.id"
         :index=" `/${items.path}` "
       >
-        <template>
-          <i :class="items.icon" />
-          <span> {{ items.menuName }}</span>
-        </template>
+        <i :class="items.icon" />
+        <span> {{ items.menuName }}</span>
 
         <!-- 二级菜单 -->
         <el-menu-item v-for="item in items.children" :key="item">

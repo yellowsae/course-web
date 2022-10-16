@@ -80,10 +80,41 @@ Mock.mock('/api/student/menuInfo', (_req, _res) => {
       path: 'studentReview',
     },
   ]
-  // console.log('_req', _req)  // {url: '/api/menuInfo', type: 'GET', body: null}body: nulltype: "GET"url: "/api/menuInfo"[[Prototype]]: Object
-  // console.log('_res', _res)   // {url: '/api/menuInfo', type: 'GET', body: null}
   return {
     menuList,
     isCollapse: true,
+  }
+})
+
+// 已选题列表
+Mock.mock('/api/subjectInfo', (_req, _res) => {
+  const tableData = [
+    {
+      subject: '基于舆论分析的信息安全系统',
+      subjectType: '实验研究',
+      subjectFrom: '教师自选题',
+      mentor: '于子涵 (11111)',
+      subjectState: '确认通过',
+      operate: '题目详情',
+    },
+    {
+      subject: '基于舆论分析的信息安全系统',
+      subjectType: '实验研究',
+      subjectFrom: '教师自选题',
+      mentor: '于子涵',
+      subjectState: '不通过',
+      operate: '题目详情',
+    },
+    {
+      subject: '基于舆论分析的信息安全系统',
+      subjectType: '实验研究',
+      subjectFrom: '教师自选题',
+      mentor: '于子涵 (11111)',
+      subjectState: '确认通过',
+      operate: '题目详情',
+    },
+  ]
+  return {
+    tableData,
   }
 })

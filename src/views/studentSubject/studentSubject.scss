@@ -4,3 +4,17 @@
   flex-direction: column;
   width: 100%;
 }
+.el-card {
+  margin-bottom: 20px;
+}
+.el-table {
+  text-align: center;
+}
+
+.el-table .warning-row {
+  background: oldlace;
+}
+
+.el-table .success-row {
+  background: #f0f9eb;
+}
