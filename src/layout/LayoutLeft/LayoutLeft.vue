@@ -16,7 +16,9 @@ export default {
       // 赋值
       // this.MenuList = res.data.menuList
     }).catch((e) => {
-      alert(e)
+      // alert(e)
+      // eslint-disable-next-line no-console
+      console.log(e)
     })
 
     // 执行getMenuList方法

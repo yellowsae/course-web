@@ -14,13 +14,15 @@ export default {
       this.data = res.data.data
       // console.log(res, '直接调用axios')// 在console中看到数据
     }).catch((res) => {
-      alert('wrong')
+      // eslint-disable-next-line no-console
+      console.log(res)
     })
 
     this.$api.get('/api/data', {}).then((res) => {
       // console.log(res, '$api 发起的请求')// 在console中看到数据
     }).catch((res) => {
-      alert('wrong')
+      // eslint-disable-next-line no-console
+      console.log(res)
     })
 
     // console.log(this.axios, ' 查看vue')
