@@ -50,3 +50,40 @@ Mock.mock('/api/menuInfo', (_req, _res) => {
 
   }
 })
+
+// 侧边栏数据 - 学生端
+Mock.mock('/api/student/menuInfo', (_req, _res) => {
+  const menuList = [
+    {
+      menuName: '首页',
+      id: 1,
+      icon: 'el-icon-s-home',
+      path: 'welcome',
+
+    },
+    {
+      menuName: '选题分析',
+      id: 2,
+      icon: 'el-icon-document',
+      path: 'test',
+    },
+    {
+      menuName: '学生选题',
+      id: 3,
+      icon: 'el-icon-reading',
+      path: 'studentSubject',
+    },
+    {
+      menuName: '任务书',
+      id: 4,
+      icon: 'el-icon-edit-outline',
+      path: 'studentReview',
+    },
+  ]
+  // console.log('_req', _req)  // {url: '/api/menuInfo', type: 'GET', body: null}body: nulltype: "GET"url: "/api/menuInfo"[[Prototype]]: Object
+  // console.log('_res', _res)   // {url: '/api/menuInfo', type: 'GET', body: null}
+  return {
+    menuList,
+    isCollapse: true,
+  }
+})

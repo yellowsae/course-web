@@ -35,6 +35,14 @@ const router = new VueRouter({
           path: '/review',
           component: () => import('../views/review/index.vue'),
         },
+        {
+          path: '/studentSubject',
+          component: () => import('../views/studentSubject/index.vue'),
+        },
+        {
+          path: '/studentReview',
+          component: () => import('../views/studentReview/index.vue'),
+        },
       ],
     },
 
