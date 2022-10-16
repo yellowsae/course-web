@@ -74,10 +74,10 @@ export default {
         </template>
 
         <!-- 二级菜单 -->
-        <template v-if="item in items">
+        <el-menu-item v-for="item in items.children" :key="item">
           <i :class="item.icon" />
           <span>{{ item.menuName }}</span>
-        </template>
+        </el-menu-item>
       </el-menu-item>
     </el-menu>
   </div>
