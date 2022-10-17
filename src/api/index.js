@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production')
 // 请求发起前拦截
 instanceA.interceptors.request.use((config) => {
   // 这里可以对接口请求头进行操作 如：config.headers['X-Token'] = token
-  // eslint-disable-next-line no-console
+
   // console.log('请求拦截instanceA', config)
   return config
 }, (error) => {
@@ -34,7 +34,6 @@ instanceA.interceptors.request.use((config) => {
   return Promise.reject(error)
 })
 instanceB.interceptors.request.use((config) => {
-  // eslint-disable-next-line no-console
   // console.log('请求拦截instanceB', config)
   return config
 }, (error) => {
@@ -44,14 +43,12 @@ instanceB.interceptors.request.use((config) => {
 
 // 响应拦截（请求返回后拦截）
 instanceA.interceptors.response.use((response) => {
-  // eslint-disable-next-line no-console
   // console.log('响应拦截instanceA', response)
   return response
 }, (error) => {
   return Promise.reject(error)
 })
 instanceB.interceptors.response.use((response) => {
-  // eslint-disable-next-line no-console
   // console.log('响应拦截instanceB', response)
   return response
 }, (error) => {

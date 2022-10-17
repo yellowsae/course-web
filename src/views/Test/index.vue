@@ -26,7 +26,7 @@ export default {
     })
     // 测试于后端 接口传参
     this.$api.doGet('/student/graduation', { pageNum: 1, pageSize: 1, categoryId: 1 }).then((res) => {
-      // eslint-disable-next-line no-console
+
       // console.log(res, '测试于后端 接口传参')
     }).catch((res) => {
       // eslint-disable-next-line no-console

@@ -41,7 +41,7 @@ export default {
     // 侧边栏学生端
     async getMenuListStudent() {
       const res = await this.$api.get('/api/student/menuInfo', {})
-      // eslint-disable-next-line no-console
+
       this.MenuList = res.data.menuList
       this.isCollapse = res.data.isCollapse
     },
