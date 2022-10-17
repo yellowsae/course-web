@@ -5,12 +5,19 @@
   align-items: center;
   background-image: url(../../assets/images/login.png);
   background-repeat: no-repeat;
+
+  .el-card {
+    background-color: #fff;
+    opacity: 10;
+    width: 500px;
+    height: 500px;
+    margin-right: 10px;
+    }
+
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+
 }
 
-.el-card {
-  background-color: #fff;
-  opacity: 10;
-  width: 500px;
-  height: 500px;
-  margin-right: 10px;
-}

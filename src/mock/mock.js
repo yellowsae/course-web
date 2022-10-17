@@ -93,7 +93,7 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subject: '基于舆论分析的信息安全系统', // 题目
       subjectType: '实验研究', // 题目类型
       subjectFrom: '教师自选题', // 题目来源
-      mentor: '于子涵 (11111)', // 教师编号
+      mentor: '张三 (11111)', // 教师编号
       subjectState: '确认通过', // 是否确认通过
       reportTime: '2020-12-12 19:16:10', // 申报时间
       operate: '题目详情', // 操作
@@ -103,7 +103,7 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subject: '基于舆论分析的信息安全系统',
       subjectType: '软件开发',
       subjectFrom: '教师自选题',
-      mentor: '于子涵',
+      mentor: '张三',
       reportTime: '2020-12-12 19:16:10', // 申报时间
       subjectState: '不通过',
       profession: '设计系', // 所属院系
@@ -114,7 +114,7 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subjectType: '工程设计',
       subjectFrom: '教师自选题',
       reportTime: '2020-12-12 19:16:10', // 申报时间
-      mentor: '于子涵 (11111)',
+      mentor: '李四 (2222)',
       subjectState: '确认通过',
       profession: '电子信息工程系', // 所属院系
       operate: '题目详情',
@@ -122,5 +122,26 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
   ]
   return {
     tableData,
+  }
+})
+
+// 模拟登录
+Mock.mock('/api/login', (_req, _res) => {
+  const data = {
+    token: 'user-student-token',
+    id: 300,
+    studentId: 1951400299,
+    username: '张三',
+    profession: '网络工程',
+    grade: '2019',
+    email: 'test@test.test',
+  }
+  const meta = {
+    msg: '登录成功',
+    status: 200,
+  }
+  return {
+    data,
+    meta,
   }
 })
