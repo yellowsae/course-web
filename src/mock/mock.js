@@ -90,27 +90,33 @@ Mock.mock('/api/student/menuInfo', (_req, _res) => {
 Mock.mock('/api/subjectInfo', (_req, _res) => {
   const tableData = [
     {
-      subject: '基于舆论分析的信息安全系统',
-      subjectType: '实验研究',
-      subjectFrom: '教师自选题',
-      mentor: '于子涵 (11111)',
-      subjectState: '确认通过',
-      operate: '题目详情',
+      subject: '基于舆论分析的信息安全系统', // 题目
+      subjectType: '实验研究', // 题目类型
+      subjectFrom: '教师自选题', // 题目来源
+      mentor: '于子涵 (11111)', // 教师编号
+      subjectState: '确认通过', // 是否确认通过
+      reportTime: '2020-12-12 19:16:10', // 申报时间
+      operate: '题目详情', // 操作
+      profession: '计算机科学与技术', // 所属院系
     },
     {
       subject: '基于舆论分析的信息安全系统',
-      subjectType: '实验研究',
+      subjectType: '软件开发',
       subjectFrom: '教师自选题',
       mentor: '于子涵',
+      reportTime: '2020-12-12 19:16:10', // 申报时间
       subjectState: '不通过',
+      profession: '设计系', // 所属院系
       operate: '题目详情',
     },
     {
       subject: '基于舆论分析的信息安全系统',
-      subjectType: '实验研究',
+      subjectType: '工程设计',
       subjectFrom: '教师自选题',
+      reportTime: '2020-12-12 19:16:10', // 申报时间
       mentor: '于子涵 (11111)',
       subjectState: '确认通过',
+      profession: '电子信息工程系', // 所属院系
       operate: '题目详情',
     },
   ]
