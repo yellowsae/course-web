@@ -5,24 +5,18 @@ export default {
     return {
       // 是否展开菜单
       isCollapse: '',
+      // 侧边栏数据
       MenuList: [],
       // 本地保存路由
       activePath: '',
     }
   },
   mounted() {
-    // 获取侧边栏数据
-    this.$api.get('/api/menuInfo', {}).then((res) => {
-      // 赋值
-      // this.MenuList = res.data.menuList
-    }).catch((e) => {
-      // alert(e)
-      // eslint-disable-next-line no-console
-      console.log(e)
-    })
-
     // 执行getMenuList方法
-    this.getMenuList()
+    // this.getMenuList()  // 侧边栏数据 - 教师端
+
+    // 侧边栏 Student 端
+    this.getMenuListStudent()
   },
   methods: {
     // 保存链接的激活状态
@@ -43,6 +37,14 @@ export default {
       this.MenuList = res.data.menuList
       this.isCollapse = res.data.isCollapse
     },
+
+    // 侧边栏学生端
+    async getMenuListStudent() {
+      const res = await this.$api.get('/api/student/menuInfo', {})
+      // eslint-disable-next-line no-console
+      this.MenuList = res.data.menuList
+      this.isCollapse = res.data.isCollapse
+    },
   },
 }
 </script>
@@ -58,25 +60,21 @@ export default {
       router
       :default-active="activePath"
     >
-      <el-submenu
+      <!-- 指向 -->
+      <el-menu-item
         v-for="items in MenuList"
-        :key="items.id" :index="`${items.id}` "
+        :key="items.id"
+        :index=" `/${items.path}` "
       >
-        <template #title>
-          <i class="el-icon-s-custom" />
-          <span>{{ items.authName }}</span>
-        </template>
-        <el-menu-item
-          v-for="item in items.children"
-          :key="item.id" :index=" `/${item.path}` "
-          @click="saveNameState(`/${item.path}`)"
-        >
-          <template #title>
-            <i class="el-icon-menu" />
-            <span>{{ item.authName }}</span>
-          </template>
+        <i :class="items.icon" />
+        <span> {{ items.menuName }}</span>
+
+        <!-- 二级菜单 -->
+        <el-menu-item v-for="item in items.children" :key="item">
+          <i :class="item.icon" />
+          <span>{{ item.menuName }}</span>
         </el-menu-item>
-      </el-submenu>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
