@@ -162,3 +162,24 @@ Mock.mock('/api/get/subjectInfo', (_req, _res) => {
     selectedData,
   }
 })
+
+// 模拟登录
+Mock.mock('/api/login', (_req, _res) => {
+  const data = {
+    token: 'user-student-token-123456',
+    id: 300,
+    studentId: 1951400299,
+    username: '张三',
+    profession: '网络工程',
+    grade: '2019',
+    email: 'test@test.test',
+  }
+  const meta = {
+    msg: '登录成功',
+    status: 200,
+  }
+  return {
+    data,
+    meta,
+  }
+})
