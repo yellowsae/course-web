@@ -94,10 +94,11 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subjectType: '实验研究', // 题目类型
       subjectFrom: '教师自选题', // 题目来源
       mentor: '于子涵 (11111)', // 教师编号
-      subjectState: '确认通过', // 是否确认通过
+      teachingRoom: '', // 教研室
       reportTime: '2020-12-12 19:16:10', // 申报时间
       operate: '题目详情', // 操作
-      profession: '计算机科学与技术', // 所属院系
+      profession: '通信类', // 专业大类
+      subjectDifficulty: 'A', // 难度
     },
     {
       subject: '基于舆论分析的信息安全系统',
@@ -105,9 +106,10 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subjectFrom: '教师自选题',
       mentor: '于子涵',
       reportTime: '2020-12-12 19:16:10', // 申报时间
-      subjectState: '不通过',
-      profession: '设计系', // 所属院系
+      teachingRoom: '',
+      profession: '计算机类', // 专业大类
       operate: '题目详情',
+      subjectDifficulty: 'B', // 难度
     },
     {
       subject: '基于舆论分析的信息安全系统',
@@ -115,12 +117,48 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subjectFrom: '教师自选题',
       reportTime: '2020-12-12 19:16:10', // 申报时间
       mentor: '于子涵 (11111)',
-      subjectState: '确认通过',
-      profession: '电子信息工程系', // 所属院系
+      teachingRoom: '',
+      profession: '通信类',
+      subjectDifficulty: 'C', // 难度
       operate: '题目详情',
     },
   ]
   return {
     tableData,
+  }
+})
+
+// 已选题列表
+Mock.mock('/api/get/subjectInfo', (_req, _res) => {
+  const selectedData = [
+    {
+      id: '1', // 题目id
+      subject: '基于舆论分析的信息安全系统', // 题目
+      subjectType: '实验研究', // 题目类型
+      subjectFrom: '教师自选题', // 题目来源
+      mentor: '于子涵 (11111)', // 教师编号
+      teachingRoom: '', // 教研室
+      reportTime: '2020-12-12 19:16:10', // 申报时间
+      operate: '题目详情', // 操作
+      profession: '通信类', // 专业大类
+      subjectDifficulty: 'A', // 难度
+      subjectState: true, // 题目状态
+    },
+    // {
+    //   id: '2',
+    //   subject: '基于舆论分析的信息安全系统',
+    //   subjectType: '工程设计',
+    //   subjectFrom: '教师自选题',
+    //   reportTime: '2020-12-12 19:16:10', // 申报时间
+    //   mentor: '于子涵 (11111)',
+    //   teachingRoom: '',
+    //   profession: '通信类',
+    //   subjectDifficulty: 'C', // 难度
+    //   operate: '题目详情',
+    //   subjectState: false, // 题目状态
+    // },
+  ]
+  return {
+    selectedData,
   }
 })
