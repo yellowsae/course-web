@@ -2,6 +2,8 @@
 
 import axios from 'axios' // 引入axios
 import qs from 'qs' // 引入qs，用来序列化post类型的数据，否则后端无法接收到数据
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 // 设置post请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.withCredentials = false// 在跨域请求时，不会携带用户凭证；返回的 response 里也会忽略 cookie
@@ -26,30 +28,27 @@ if (process.env.NODE_ENV === 'production')
 // 请求发起前拦截
 instanceA.interceptors.request.use((config) => {
   // 这里可以对接口请求头进行操作 如：config.headers['X-Token'] = token
-
-  // console.log('请求拦截instanceA', config)
+  NProgress.start()
   return config
 }, (error) => {
-  // Do something with request error
   return Promise.reject(error)
 })
 instanceB.interceptors.request.use((config) => {
-  // console.log('请求拦截instanceB', config)
+  NProgress.start()
   return config
 }, (error) => {
-  // Do something with request error
   return Promise.reject(error)
 })
 
 // 响应拦截（请求返回后拦截）
 instanceA.interceptors.response.use((response) => {
-  // console.log('响应拦截instanceA', response)
+  NProgress.done()
   return response
 }, (error) => {
   return Promise.reject(error)
 })
 instanceB.interceptors.response.use((response) => {
-  // console.log('响应拦截instanceB', response)
+  NProgress.done()
   return response
 }, (error) => {
   return Promise.reject(error)

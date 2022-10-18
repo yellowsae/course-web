@@ -104,7 +104,7 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
       subject: '基于舆论分析的信息安全系统',
       subjectType: '软件开发',
       subjectFrom: '教师自选题',
-      mentor: '于子涵',
+      mentor: '张三',
       reportTime: '2020-12-12 19:16:10', // 申报时间
       teachingRoom: '',
       profession: '计算机类', // 专业大类
