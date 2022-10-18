@@ -128,7 +128,7 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
 // 模拟登录
 Mock.mock('/api/login', (_req, _res) => {
   const data = {
-    token: 'user-student-token',
+    token: 'user-student-token-123456',
     id: 300,
     studentId: 1951400299,
     username: '张三',
