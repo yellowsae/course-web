@@ -1,79 +1,42 @@
-/* 题目基本信息标题 */
+/*题目标题*/
 .el-descriptions__header {
-    height: 8px;
-    color: #000000;
-}
-
-.el-descriptions__title {
-    font-weight: 500;
-}
-
-/* 题目基本信息内容 */
-.TopicInformationContent {
-    padding: 20px;
-}
-
-.el-descriptions__body {
-    padding: 20px 0;
-}
-
-span.el-descriptions-item__label.has-colon {
-    margin-left: 150px;
-}
-
-/* 边框 */
-.el-descriptions__body,
-.TitleTypeBackground,
-.CaptionContent {
-    border: 1px solid #ccc;
-}
-
-/* 题目类型 */
-.SingleType {
-    line-height: 50px;
-    font-weight: 500;
-}
-
-/* 标题 */
-.caption {
+    margin-bottom: 0px;
+  }
+  /* 题目基本信息内容 */
+  .el-descriptions__body {
+    padding: 20px 0 10px 0;
+    padding-left: 70px;
+  }
+  
+  /* 标题字体 */
+  .el-descriptions__title {
     font-size: 16px;
-    font-weight: 700;
-    text-align: left;
-    color: #000000;
-    line-height: 50px;
-    font-weight: 500;
-}
-
-/* 单选框 */
-.el-radio__input.is-disabled+span.el-radio__label {
-    color: #606266;
-    cursor: not-allowed;
-}
-
-.el-radio__input.is-disabled.is-checked .el-radio__inner::after {
-    background-color: #242426;
-}
-
-label.el-radio.is-disabled {
-    margin-left: 20px;
-    line-height: 40px;
-    float: left;
-}
-
-.TitleTypeBackground {
-    height: 41px;
-    width: 1279.2px;
-
-    background-color: #FFF;
-}
-
-/* 标题内容 */
-.CaptionContent {
-    width: 1279.2px;
-    background-color: #FFF;
-    text-align: left;
+  }
+  
+  .caption {
     font-size: 16px;
-    line-height: 50px;
-    padding: 0 20px;
-    /* word-break: break-all; */
-}
+    font-weight: 600;
+    margin: 0 0 20px 0;
+  }
+  
+  /* 文本框 */
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-left: 40px;
+  }
+  /*card*/
+  .el-card {
+    margin-bottom: 30px;
+  }
+  
+  /*类型样式*/
+  .el-radio__input.is-disabled+span.el-radio__label {
+    color: #636363;
+  }
+  .el-radio__input.is-disabled.is-checked .el-radio__inner::after {
+    background-color: #000000;
+  }
+  .radioOne{
+    padding-left: 66px;
+  }
