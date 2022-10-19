@@ -97,6 +97,11 @@ export default {
     },
 
     // 题目详情的跳转
+    handleEdit() {
+      this.$router.push({
+        path: '/studentTopicDetails',
+      })
+    },
 
     // 选择题目
   },
