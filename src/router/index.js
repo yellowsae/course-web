@@ -40,10 +40,6 @@ const router = new VueRouter({
           component: () => import('../views/studentSubject/index.vue'),
         },
         {
-          path: '/studentTopicDetails',
-          component: () => import('../views/StudentTopicDetails/index.vue'),
-        },
-        {
           path: '/studentReview',
           component: () => import('../views/studentReview/index.vue'),
         },
