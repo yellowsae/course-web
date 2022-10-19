@@ -19,7 +19,7 @@ const instanceB = axios.create({
 
 // 如果项目为单一域名，这里可以不用进行配置，当项目接口有多个域名时，要对axios实例基础路径进行配置，否则在项目生产环境中无法进行区别调用
 if (process.env.NODE_ENV === 'development')
-  instanceB.defaults.baseURL = 'http://172.21.148.140:7777'
+  instanceB.defaults.baseURL = 'http://172.21.148.40:7777'
 
 if (process.env.NODE_ENV === 'production')
   instanceA.defaults.baseURL = 'http://127.0.0.1/'
@@ -35,6 +35,10 @@ instanceA.interceptors.request.use((config) => {
 })
 instanceB.interceptors.request.use((config) => {
   NProgress.start()
+  const token = sessionStorage.getItem('token2')
+  if (token)
+    config.headers.token = token
+
   return config
 }, (error) => {
   return Promise.reject(error)
@@ -66,6 +70,10 @@ const api = {
   // 与后端交互使用 instanceB
   doGet(url, data) {
     return instanceB.get(url, { params: data })
+  },
+
+  doLogin(url, data) {
+    return instanceB.post(url, data)
   },
   doPost(url, data) {
     return instanceB.post(url, qs.stringify(data))

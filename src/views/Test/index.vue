@@ -24,20 +24,59 @@ export default {
       // eslint-disable-next-line no-console
       console.log(res)
     })
-    // 测试于后端 接口传参
-    this.$api.doGet('/student/graduation', { pageNum: 1, pageSize: 1, categoryId: 1 }).then((res) => {
+    // // 测试于后端 接口传参
+    // this.$api.doGet('/student/graduation', { pageNum: 1, pageSize: 1, categoryId: 1 }).then((res) => {
 
-      // console.log(res, '测试于后端 接口传参')
-    }).catch((res) => {
-      // eslint-disable-next-line no-console
-      console.log(res)
-    })
+    //   // console.log(res, '测试于后端 接口传参')
+    // }).catch((res) => {
+    //   // eslint-disable-next-line no-console
+    //   console.log(res)
+    // })
+    // 后端
+    // this.$api.doPost('/student/login', { name: 'xz', password: '123' }).then((res) => {
+    //   console.log('登录成功，保存token')
+    //   window.sessionStorage.setItem('token2', res.data.data.token)
+    // }).catch((res) => {
+    //   // eslint-disable-next-line no-console
+    //   console.log(res)
+    // })
   },
+  methods: {
+    login() {
+      this.$api.doLogin('/student/login', { name: 'xz', password: '123' }).then((res) => {
+        window.sessionStorage.setItem('token2', res.data.data.token)
+        this.$message.success('登录成功')
+        console.log.success('登录成功')
+      }).catch((res) => {
+      // eslint-disable-next-line no-console
+        console.log(res)
+      })
+    },
+
+    async logout() {
+      // 退出
+      this.$api.doPost('/student/logout').then((res) => {
+        window.sessionStorage.removeItem('token2')
+        this.$message.info('退出登录')
+        console.log('退出登录')
+      }).catch((res) => {
+      // eslint-disable-next-line no-console
+        console.log(res)
+      })
+    },
+  },
+
 }
 </script>
 
 <template>
   <div>
     Test
+    <el-button type="primary" @click="login">
+      登录
+    </el-button>
+    <el-button @click="logout">
+      退出
+    </el-button>
   </div>
 </template>
