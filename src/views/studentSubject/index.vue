@@ -3,19 +3,18 @@ export default {
   name: 'StudentSub',
   data() {
     return {
-      //
+      // 展示题目列表
       tableData: [],
+      // 已选题目列表
+      selectedData: [],
 
       // 发起请求获取 专业数据
       professions: [
         {
-          value: '计算机与信息安全系',
+          value: '通信类',
         },
         {
-          value: '设计系',
-        },
-        {
-          value: '电子信息工程系',
+          value: '计算机类',
         },
       ],
       // 题目类型
@@ -57,6 +56,19 @@ export default {
         },
       ],
 
+      // 题目难度
+      subjectDifficulty: [
+        {
+          value: 'A',
+        },
+        {
+          value: 'B',
+        },
+        {
+          value: 'C',
+        },
+      ],
+
       // 查询表单 -> 之后传递的参数
       queryForm: {
         grade: '',
@@ -70,6 +82,7 @@ export default {
           q_subjectType: '',
           q_teacherName: '',
           q_subject_options: '',
+          q_subjectDifficulty: '',
         },
       },
     }
@@ -77,6 +90,7 @@ export default {
 
   created() {
     this.gettableDataInfo()
+    this.getselectedDataInfo()
   },
 
   methods: {
@@ -95,7 +109,11 @@ export default {
 
       this.tableData = res.data.tableData
     },
-
+    // 已选题目列表
+    async getselectedDataInfo() {
+      const res = await this.$api.get('/api/get/subjectInfo', {})
+      this.selectedData = res.data.selectedData
+    },
     // 题目详情的跳转
     handleEdit() {
       this.$router.push({
@@ -114,7 +132,7 @@ export default {
     <el-card>
       <!-- table -->
       <el-table
-        :data="tableData"
+        :data="selectedData"
         border
         :row-class-name="tableRowClassName"
         stripe
@@ -124,29 +142,60 @@ export default {
           prop="subject"
           label="题目"
           width="300"
+          align="center"
+        />
+        <el-table-column
+          prop="profession"
+          label="专业大类"
+          width="180"
+          align="center"
         />
         <el-table-column
           prop="subjectType"
           label="题目类型"
           width="180"
+          align="center"
         />
         <el-table-column
-          prop="subjectFrom"
-          label="题目来源"
+          prop="subjectDifficulty"
+          label="题目难度"
+          align="center"
+
+          width="180"
         />
         <el-table-column
           prop="mentor"
           label="指导教师"
+          align="center"
         />
         <el-table-column
           prop="subjectState"
           label="确认状态"
-        />
+          align="center"
+          width="180"
+        >
+          <template>
+            <!-- {{ item.subjectState ? '已确认' : '未确认' }} -->
+            <!-- {{ item }} -->
+            <i class="el-icon-check" />
+          </template>
+        </el-table-column>
         <el-table-column
           prop="operate"
           label="操作"
           width="180"
-        />
+          align="center"
+        >
+          <template #default="scope">
+            <el-button
+              type="text"
+              size="small"
+              @click="handleEdit(scope.$index, scope.row)"
+            >
+              题目详情
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </el-card>
     <!-- 题目列表查询 -->
@@ -185,6 +234,13 @@ export default {
                 :value="item.value"
               />
             </el-select>
+            <el-select v-model="queryForm.searchInfo.q_subjectDifficulty" placeholder="题目难度">
+              <el-option
+                v-for="item in subjectDifficulty"
+                :key="item.value"
+                :value="item.value"
+              />
+            </el-select>
           </el-form>
           <el-button type="primary">
             查询
@@ -206,34 +262,41 @@ export default {
         <el-table-column
           prop="subject"
           label="题目"
+          align="center"
           width="300"
         />
         <el-table-column
           prop="profession"
-          label="题目所属院系"
+          label="专业大类"
+          align="center"
           width="180"
         />
         <el-table-column
           prop="subjectType"
           label="题目类型"
           width="180"
+          align="center"
         />
         <el-table-column
-          prop="subjectFrom"
-          label="题目来源"
+          prop="subjectDifficulty"
+          label="题目难度"
+          align="center"
         />
         <el-table-column
           prop="mentor"
+          align="center"
           label="指导教师（编号）"
         />
         <el-table-column
-          prop="reportTime"
-          label="申报时间"
+          prop="teachingRoom"
+          label="教研室"
+          align="center"
         />
         <el-table-column
           prop="operate"
           label="操作"
           width="180"
+          align="center"
         >
           <template #default="scope">
             <el-button
