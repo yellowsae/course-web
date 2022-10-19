@@ -3,138 +3,63 @@ export default {
   name: 'Subject',
   data() {
     return {
-      // 发起请求获取 专业数据
-      professions: [
-        {
-          value: '通信类',
-        },
-        {
-          value: '计算机类',
-        },
-      ],
-      // 题目类型
-      subjectType: [
-        {
-          value: '工程研究',
-        },
-        {
-          value: '软件开发',
-        },
-        {
-          value: '工程设计',
-        },
-      ],
-
-      // 教师姓名
-      teacherName: [
-        {
-          value: '于子涵',
-        },
-        {
-          value: '李四',
-        },
-        {
-          value: '王五',
-        },
-      ],
-
-      // 可选项目
-      SubjectOptions: [
-        {
-          value: '项目A',
-        },
-        {
-          value: '项目B',
-        },
-        {
-          value: '项目C',
-        },
-      ],
-
-      // 题目难度
-      subjectDifficulty: [
-        {
-          value: 'A',
-        },
-        {
-          value: 'B',
-        },
-        {
-          value: 'C',
-        },
-      ],
-
-      // 查询表单 -> 之后传递的参数
-      queryForm: {
-        grade: '',
-        class: '',
-        studentId: '',
-        studentName: '',
-
-        // 保存选中的数据
-        searchInfo: {
-          q_professions: '',
-          q_subjectType: '',
-          q_teacherName: '',
-          q_subject_options: '',
-          q_subjectDifficulty: '',
-        },
+      tableData: [],
+      formInline: {
+        user: '',
+        region: '',
+        bigClass: '',
+        classInfo: '',
+        state: '',
+        subjectType: '',
       },
     }
+  },
+  methods: {
+    onSubmit() {
+      // eslint-disable-next-line no-console
+      console.log('submit!')
+    },
   },
 }
 </script>
 
 <template>
   <div>
+    <!-- 查询 -->
     <el-card>
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <el-form :data="queryForm">
-            <!-- 选项 -->
-            <el-select v-model="queryForm.searchInfo.q_professions" placeholder="专业大类">
-              <el-option
-                v-for="item in professions"
-                :key="item.value"
-                :value="item.value"
-              />
-            </el-select>
-
-            <el-select v-model="queryForm.searchInfo.q_subjectType" placeholder="题目类型">
-              <el-option
-                v-for="item in subjectType"
-                :key="item.value"
-                :value="item.value"
-              />
-            </el-select>
-
-            <el-select v-model="queryForm.searchInfo.q_teacherName" placeholder="教师姓名">
-              <el-option
-                v-for="item in teacherName"
-                :key="item.value"
-                :value="item.value"
-              />
-            </el-select>
-            <el-select v-model="queryForm.searchInfo.q_subject_options" placeholder="可选项目">
-              <el-option
-                v-for="item in SubjectOptions"
-                :key="item.value"
-                :value="item.value"
-              />
-            </el-select>
-            <el-select v-model="queryForm.searchInfo.q_subjectDifficulty" placeholder="题目难度">
-              <el-option
-                v-for="item in subjectDifficulty"
-                :key="item.value"
-                :value="item.value"
-              />
-            </el-select>
-          </el-form>
-          <el-button type="primary">
+      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+        <el-form-item label="题目所属院">
+          <el-select v-model="formInline.bigClass">
+            <el-option label="信息工程学院" value="bigClass" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="专业大类">
+          <el-select v-model="formInline.classInfo">
+            <el-option label="通信类" value="tongxinlei" />
+            <el-option label="计算机类" value="jisuanjilei" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="确认状态">
+          <el-select v-model="formInline.state">
+            <el-option label="未确认" value="weiquren" />
+            <el-option label="已确认" value="yiqueren" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="题目类型">
+          <el-select v-model="formInline.subjectType">
+            <el-option label="工程设计" value="gongchengsheji" />
+            <el-option label="工程技术" value="gongchengjishu" />
+            <el-option label="实验研究" value="shiyanyanjiu" />
+            <el-option label="软件开发" value="ruanjiankaifa" />
+            <el-option label="理论研究" value="lilunyanjiu" />
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">
             查询
           </el-button>
-        </el-col>
-      </el-row>
+        </el-form-item>
+      </el-form>
     </el-card>
 
     <!-- 添加数据 -->
@@ -144,7 +69,6 @@ export default {
       <el-table
         :data="tableData"
         border
-        :row-class-name="tableRowClassName"
         stripe
       >
         <el-table-column label="#" type="index" />
