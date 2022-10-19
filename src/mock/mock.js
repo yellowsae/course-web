@@ -128,34 +128,6 @@ Mock.mock('/api/subjectInfo', (_req, _res) => {
   }
 })
 
-// 学生题目详情
-Mock.mock('/api/topicDetails', (_req, _res) => {
-  const topicParticularData = [{
-    submitTime: Random.datetime(), // 随机一个日期+时间
-    titleName: Random.ctitle(10, 20), // 随机产生一个中文标题
-    specialityClasses: '计算机类', // 选择其中一个
-    declarationTime: Random.date(), // 随机产生一个日期
-    hours: Random.natural(150, 250), // 随机产生一个150-250
-    difficulty: 'A',
-    identifier: Random.natural(100000000, 1000000000),
-    source: '教师自选题',
-    direction: '横向',
-    occupation: '教授',
-    guidanceTeacher: Random.cname(), // 随机生成一个常见的中文姓名
-    staffRoom: '信息工程学院计算机网络教研室',
-    Teachermail: `${Random.natural(1000000000, 10000000000)}@qq.com`,
-    studentName: Random.cname(),
-    classStudentNumber: Random.natural(1951000000, 1952000000),
-    type: '工程设计',
-    taskDescription: Random.csentence(30, 40),
-    requireDescription: Random.csentence(30, 40),
-    needskill: Random.csentence(30, 40),
-    requireEquipment: Random.csentence(30, 40),
-  }]
-  return {
-    topicParticularData,
-  }
-}
 // 已选题列表
 Mock.mock('/api/get/subjectInfo', (_req, _res) => {
   const selectedData = [
