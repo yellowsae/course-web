@@ -18,12 +18,6 @@ const instanceB = axios.create({
 })
 
 // 如果项目为单一域名，这里可以不用进行配置，当项目接口有多个域名时，要对axios实例基础路径进行配置，否则在项目生产环境中无法进行区别调用
-if (process.env.NODE_ENV === 'development')
-  instanceB.defaults.baseURL = 'http://172.21.148.140:7777'
-
-if (process.env.NODE_ENV === 'production')
-  instanceA.defaults.baseURL = 'http://127.0.0.1/'
-
 // 请求和响应拦截可以根据实际项目需求进行编写
 // 请求发起前拦截
 instanceA.interceptors.request.use((config) => {
